@@ -1,0 +1,30 @@
+[tool.poetry]
+name = "tehran-metro-backend"
+version = "0.1.0"
+description = ""
+authors = ["Erfan Arefmehr <erfan.arefmehr@gmail.com>"]
+readme = "README.md"
+
+
+[tool.poetry.dependencies]
+python = "^3.11"
+fastapi = {extras = ["standard"], version = "^0.115.0"}
+neo4j = "^5.24.0"
+pre-commit = "^3.8.0"
+
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
+
+[tool.black]
+max-line-length = 99
+target-version = ['py37', 'py38', 'py39']
+#include = '\.pyi?$'
+extend-exclude = '''
+^/venv
+^/env
+^/.venv
+^/.env
+'''
+extend-ignore = ["E203", "E501"]
