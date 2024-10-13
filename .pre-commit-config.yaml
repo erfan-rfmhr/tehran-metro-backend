@@ -14,12 +14,6 @@ repos:
     hooks:
       - id: isort
         name: isort (python)
-      - id: isort
-        name: isort (cython)
-        types: [cython]
-      - id: isort
-        name: isort (pyi)
-        types: [pyi]
 
   - repo: https://github.com/python-poetry/poetry
     rev: '1.8.3'
