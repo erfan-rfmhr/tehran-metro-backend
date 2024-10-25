@@ -14,7 +14,7 @@ async def on_shutdown():
 
 
 @asynccontextmanager
-async def lifespan():
+async def lifespan(app):
     await on_startup()
     yield
     await on_shutdown()
