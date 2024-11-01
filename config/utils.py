@@ -1,16 +1,17 @@
 from contextlib import asynccontextmanager
 
-from config.db import Database
+from config.db import get_driver, verify_db
 
 
 async def on_startup():
     # on startup event for lifespan
-    await Database.initialize()
+    await verify_db()
 
 
 async def on_shutdown():
     # on shutdown event for lifespan
-    await Database().driver.close()
+    driver = await get_driver()
+    await driver.close()
 
 
 @asynccontextmanager
