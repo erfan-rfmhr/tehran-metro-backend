@@ -1,6 +1,6 @@
 from functools import lru_cache
 
-from neo4j import AsyncGraphDatabase
+from neo4j import AsyncGraphDatabase, AsyncSession
 
 from config._settings import get_settings
 
@@ -22,7 +22,7 @@ async def verify_db():
     await _driver.verify_authentication()
 
 
-async def get_session():
+@lru_cache
+def get_session() -> AsyncSession:
     session = _driver.session(database=settings.DB_NAME)
-    yield session
-    await session.close()
+    return session
